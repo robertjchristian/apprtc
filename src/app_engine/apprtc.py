@@ -597,17 +597,7 @@ class ParamsPage(webapp2.RequestHandler):
     self.response.write(json.dumps(params))
 
 def checkIfRedirect(self):
-  parsed_args = ''
-  if self.request.headers['Host'] in constants.REDIRECT_DOMAINS:
-    for argument in self.request.arguments():
-      parameter = '=' + self.request.get(argument)
-      if parsed_args == '':
-        parsed_args += '?'
-      else:
-        parsed_args += '&'
-      parsed_args += argument + parameter
-    redirect_url = constants.REDIRECT_URL + self.request.path + parsed_args
-    webapp2.redirect(redirect_url, permanent=True, abort=True)
+  return 0
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
